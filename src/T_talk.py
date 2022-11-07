@@ -15,12 +15,14 @@ if __name__ == '__main__':
         c_t4 = int(input("Enter in a number 4: "))
         c_t5 = int(input("Enter in a number 5: "))
         c_t6 = int(input("Enter in a number 6: "))
+        
         msg.t1 = c_t1
         msg.t2 = c_t2
         msg.t3 = c_t3
         msg.t4 = c_t4
         msg.t5 = c_t5
         msg.t6 = c_t6
+        
         rospy.loginfo(msg)
         pub.publish(msg)
         r.sleep()
