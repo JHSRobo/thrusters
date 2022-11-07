@@ -21,6 +21,10 @@ def callback(msg):
     
     rospy.loginfo(dc1)
     rospy.loginfo(dc2)
+    rospy.loginfo(dc3)
+    rospy.loginfo(dc4)
+    rospy.loginfo(dc5)
+    rospy.loginfo(dc6)
     
     thruster_channel0.duty_cycle = dc1
     thruster_channel1.duty_cycle = dc2
@@ -31,6 +35,10 @@ def callback(msg):
 
     rospy.loginfo(thruster_channel0)
     rospy.loginfo(thruster_channel1)
+    rospy.loginfo(thruster_channel2)
+    rospy.loginfo(thruster_channel3)
+    rospy.loginfo(thruster_channel4)
+    rospy.loginfo(thruster_channel5)
 
 if __name__ == '__main__':
     i2c = busio.I2C(board.SCL, board.SDA)
