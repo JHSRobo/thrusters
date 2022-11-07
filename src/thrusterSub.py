@@ -12,7 +12,11 @@ def callback(msg):
     rospy.loginfo(msg)
     
     dc1 = int(((((msg.t1 * 3) + 1500) / 10_000) * 65536))
-    dc2 = (msg.t2 * 3)
+    dc2 = int(((((msg.t2 * 3) + 1500) / 10_000) * 65536))
+    dc3 = int(((((msg.t3 * 3) + 1500) / 10_000) * 65536))
+    dc4 = int(((((msg.t4 * 3) + 1500) / 10_000) * 65536))
+    dc5 = int(((((msg.t5 * 3) + 1500) / 10_000) * 65536))
+    dc6 = int(((((msg.t6 * 3) + 1500) / 10_000) * 65536))
     
     
     rospy.loginfo(dc1)
@@ -20,6 +24,10 @@ def callback(msg):
     
     thruster_channel0.duty_cycle = dc1
     thruster_channel1.duty_cycle = dc2
+    thruster_channel2.duty_cycle = dc3
+    thruster_channel3.duty_cycle = dc4
+    thruster_channel4.duty_cycle = dc5
+    thruster_channel5.duty_cycle = dc6
 
     rospy.loginfo(thruster_channel0)
     rospy.loginfo(thruster_channel1)
