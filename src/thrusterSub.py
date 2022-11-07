@@ -1,6 +1,6 @@
 import rospy
 from std_msgs.msg import String
-from thrustersInterface.msg import thrusterPercents
+from thrusterInterface.msg import thrusterPercents
 import time
 import keyboard
 from adafruit_servokit import ServoKit
