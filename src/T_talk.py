@@ -1,6 +1,6 @@
 import rospy
 from std_msgs.msg import String
-from thrusters.msg import thrusterPercents
+from thrusterInterface.msg import thrusterPercents
     
 if __name__ == '__main__':
     pub = rospy.Publisher('thusters', thrusterPercents, queue_size=10)
