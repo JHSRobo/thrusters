@@ -11,13 +11,14 @@ import adafruit_pca9685
 def callback(msglist):
     rospy.loginfo(msglist)
     
-    msglist = {0:msg.t1, 1:msg.t2, 2:msg.t3, 3:msg.t4, 4:msg.t5, 5:msg.t6}
+    msglist = [msg.t1, msg.t2, msg.t3, msg.t4, msg.t5, msg.t6]
     
     dc = []
     
     for i in range(6):
-        dc.append(int(((((msglist[i] * 3) + 1500) / 10000) * 65536)))
-    
+        # Do some number crunching to shift the thruster percents to duty cycles
+        thrustDc = int((msglist[i] * 3 + 1500) * 6.5536)
+        dc.append(thrustDc)
     
     rospy.loginfo(dc)
     
