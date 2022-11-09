@@ -11,6 +11,8 @@ import adafruit_pca9685
 def callback(msglist):
     rospy.loginfo(msglist)
     
+    msglist = {0:msg.t1, 1:msg.t2, 2:msg.t3, 3:msg.t4, 4:msg.t5, 5:msg.t6}
+    
     dc = []
     
     for i in range(6):
@@ -29,8 +31,6 @@ if __name__ == '__main__':
     shield = adafruit_pca9685.PCA9685(i2c)
     kit = ServoKit(channels = 16)
     shield.frequency = 100
-    
-    msglist = {0:msg.t1, 1:msg.t2, 2:msg.t3, 3:msg.t4, 4:msg.t5, 5:msg.t6}
     
     thruster_channels = shield.channels[0:6]
     
