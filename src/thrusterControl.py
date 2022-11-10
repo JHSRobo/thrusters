@@ -17,7 +17,7 @@ def callback(msglist):
     
     for i in range(6):
         # Do some number crunching to shift the thruster percents to duty cycles
-        thrustDc = int((msglist[i] * 3 + 1500) * 6.5536)
+        thrustDc = int(((msglist[i] - 3.6) * 3 + 1500) * 6.5536)
         dc.append(thrustDc)
     
     rospy.loginfo(dc)
