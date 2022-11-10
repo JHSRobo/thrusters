@@ -39,7 +39,7 @@ if __name__ == '__main__':
         thruster_channels[i].duty_cycle = 0x2666
         print("Done")
         # Give time so that the thrusters initialize correctly
-        time.sleep(2)
+        time.sleep(0.01)
 
     rospy.init_node('thrusterSub', anonymous=True)
 
