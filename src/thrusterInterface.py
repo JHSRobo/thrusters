@@ -8,7 +8,7 @@ import board
 import busio
 import adafruit_pca9685
 
-def callback(msg):
+def thrusterCallback(msg):
     rospy.loginfo(msg)
     dc1 = msg.t1
     dc2 = msg.t2
@@ -69,9 +69,9 @@ if __name__ == '__main__':
     print("Done")
     time.sleep(0.1)
 
-    rospy.init_node('thrusterSub', anonymous=True)
+    rospy.init_node('thruster_interface', anonymous=True)
 
-    rospy.Subscriber("thrusters", thrusterPercents, callback=callback)
+    rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
 
     
 
