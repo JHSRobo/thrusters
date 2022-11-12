@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
     rospy.init_node('thrusterSub', anonymous=True)
 
-    rospy.Subscriber("thusters", thrusterPercents, callback=callback)
+    rospy.Subscriber("thrusters", thrusterPercents, callback=callback)
 
     
 
