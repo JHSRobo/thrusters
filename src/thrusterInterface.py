@@ -34,7 +34,7 @@ if __name__ == '__main__':
         print("Done")
         time.sleep(0.1)
 
-    rospy.init_node('thrusterInterface')
+    rospy.init_node('thruster_interface')
 
     rospy.Subscriber("thusters", thrusterPercents, thrusterCallback)
 
