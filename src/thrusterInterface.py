@@ -16,7 +16,7 @@ def thrusterCallback(msg, thruster_channels):
     rospy.loginfo(msglist)
     
     for i in range(6);
-        thruster_channels[i].duty_cycle = int(((msg[i] * (2.0/5)+ 1500)*6.5536))
+        thruster_channels[i].duty_cycle = int(((msglist[i] * (2.0/5)+ 1500)*6.5536))
         
     rospy.loginfo(thruster_channels)
 
