@@ -2,7 +2,6 @@ import rospy
 from std_msgs.msg import String
 from thrusters.msg import thrusterPercents
 import time
-import keyboard
 from adafruit_servokit import ServoKit
 import board
 import busio
@@ -16,10 +15,9 @@ def thrusterCallback(msg):
     
     rospy.loginfo(msglist)
     
-    for i in range(6);
+    for i in range(6):
         thruster_channels[i].duty_cycle = int(((msglist[i] * 0.4 + 1500) * 6.5536))
-        
-    rospy.loginfo(thruster_channels)
+        rospy.loginfo(int(((msglist[i] * 0.4 + 1500) * 6.5536)))
 
 if __name__ == '__main__':
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -27,17 +25,16 @@ if __name__ == '__main__':
     kit = ServoKit(channels = 16)
     shield.frequency = 100
     
-    thruster_channels = shield.channels[0:6]
+    thruster_channels = []
 
     for i in range(6):
+        thruster_channels.append(shield.channels[i])
         thruster_channels[i].duty_cycle = 0x2666
-        print("Done")
+        print("Thruster On")
         time.sleep(0.1)
 
     rospy.init_node('thruster_interface')
 
     rospy.Subscriber("thusters", thrusterPercents, thrusterCallback)
-
-    
 
     rospy.spin()
