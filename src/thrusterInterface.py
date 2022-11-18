@@ -29,7 +29,7 @@ if __name__ == '__main__':
     kit = ServoKit(channels = 16)
     shield.frequency = 100
     
-    logging.basicConfig(filename="thrusterlog.log", level=logging.INFO)
+    logging.basicConfig(filename="log/thrusterlog.log", level=logging.INFO)
     
     thruster_channels = []
 
