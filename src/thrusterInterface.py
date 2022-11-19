@@ -9,11 +9,12 @@ import board
 import busio
 import adafruit_pca9685
 
+rospy.loginfo("logloglog")
+
 def thrusterCallback(msg):
     global thruster_channels
-    # rospy.loginfo(msg)
+
     logging.info(f"The msg is {msg}")
-    
     msglist = [msg.t1, msg.t2, msg.t3, msg.t4, msg.t5, msg.t6]
     
     # rospy.loginfo(msglist)
@@ -21,7 +22,6 @@ def thrusterCallback(msg):
     
     for i in range(6):
         thruster_channels[i].duty_cycle = int(((msglist[i] * 0.4 + 1500) * 6.5536))
-        # rospy.loginfo(int(((msglist[i] * 0.4 + 1500) * 6.5536)))
         logging.info(f"The thruster channel is {i} and is giving it a value of {int(((msglist[i] * 0.4 + 1500) * 6.5536))}")
 
 if __name__ == '__main__':
@@ -42,6 +42,6 @@ if __name__ == '__main__':
 
     rospy.init_node('thruster_interface')
 
-    rospy.Subscriber("thusters", thrusterPercents, thrusterCallback)
-
+    rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
+    rospy.logerr("Subscriber created")
     rospy.spin()
