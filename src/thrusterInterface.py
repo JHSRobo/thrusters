@@ -3,7 +3,6 @@ import rospy
 from std_msgs.msg import String
 from thrusters.msg import thrusterPercents
 import time
-import logging
 from adafruit_servokit import ServoKit
 import board
 import busio
@@ -15,7 +14,6 @@ def thrusterCallback(msg):
     
     for i in range(6):
         thruster_channels[i].duty_cycle = int(((msglist[i] * 0.4 + 1500) * 6.5536))
-        logging.info(f"The thruster channel is {i} and is giving it a value of {int(((msglist[i] * 0.4 + 1500) * 6.5536))}")
 
 if __name__ == '__main__':
     i2c = busio.I2C(board.SCL, board.SDA)
