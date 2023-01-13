@@ -3,4 +3,4 @@ Recieves thruster values from /thrusters, and spins the thrusters with them. Con
 
 This package depends on adafruit_servokit, which is not supported by rosdep. We have added a line to ROVMIND/rov_bringup to install this package.
 
-## Author and Maintainer: Nathan Peterson
+## Author and Maintainer: Nathan Peterson '24
