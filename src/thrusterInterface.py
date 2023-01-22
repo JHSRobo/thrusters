@@ -16,6 +16,7 @@ def thrusterCallback(msg):
         thruster_channels[i].duty_cycle = int(((msglist[i] * 0.4 + 1500) * 6.5536))
 
 if __name__ == '__main__':
+    rospy.init_node('thruster_interface')
     i2c = busio.I2C(board.SCL, board.SDA)
     try: shield = adafruit_pca9685.PCA9685(i2c)
     except: rospy.logwarn("Can't connect to PCA9685. Ignore this if thrusters are unplugged.")
@@ -32,7 +33,5 @@ if __name__ == '__main__':
             time.sleep(0.1)
         
         rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
-
-    rospy.init_node('thruster_interface')
 
     rospy.spin()
