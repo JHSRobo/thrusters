@@ -18,7 +18,7 @@ def thrusterCallback(msg):
 if __name__ == '__main__':
     i2c = busio.I2C(board.SCL, board.SDA)
     try: shield = adafruit_pca9685.PCA9685(i2c)
-    except: rospy.loginfo("Can't connect to PCA9685. Ignore this if thrusters are unplugged.")
+    except: rospy.logwarn("Can't connect to PCA9685. Ignore this if thrusters are unplugged.")
     else: 
         kit = ServoKit(channels = 16)
         shield.frequency = 100
