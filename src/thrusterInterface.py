@@ -14,13 +14,15 @@ if __name__ == '__main__':
     rospy.init_node('thruster_interface')
 
     # Create PCA object
-    pca = PCA9685(bus=1)
-    pca.set_pwm_frequency(100)
-    pca.output_enable()
+    try: pca = PCA9685(bus=1)
+    except: rospy.logwarn("Cannot connect to PCA9685. Ignore this if thrusters are unplugged")
+    else:
+      pca.set_pwm_frequency(100)
+      pca.output_enable()
 
-    # Initialize the thrusters
-    pca.channels_set_duty_all(0.15)
-    time.sleep(1)
+      # Initialize the thrusters
+      pca.channels_set_duty_all(0.15)
+      time.sleep(1)
 
     rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
 
