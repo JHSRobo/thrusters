@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import smbus2
 
+# Set values to be written to registers
 _address = 0x40
 
 REG_MODE1 = 0x00
@@ -54,18 +55,17 @@ class DutyAccess(RawAccess):
     def __setitem__(self, key, value):
         self.owner.channel_set_duty(key, value)
 
-# todo reset
 class PCA9685:
     def __init__(self, bus=4):
         self.extclk = 25e6 # BlueRobotics uses 24.567e6, we have dif clock
         self._bus = smbus2.SMBus(bus)
         self.initialize()
-        # configure output enable pin
+        # Configure output enable pin
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(26, GPIO.OUT)
 
     def initialize(self):
-        # todo reset (write 0xb6 to i2c address 00 - general call)
+
         self.write(REG_MODE1, [MODE1_SLEEP | MODE1_AI])
         self.get_prescaler()
 
@@ -256,7 +256,7 @@ class PCA9685:
 
     ##############
     # Conversion facilities
-    #################
+    ##############
 
     def offreg(self, channel):
         return REG_LED0_OFF_L + (channel*4)
