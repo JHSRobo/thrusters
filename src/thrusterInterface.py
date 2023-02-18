@@ -11,13 +11,13 @@ def thrusterCallback(msg):
     
     for i in range(6):
         duty_cycle = int(msglist[i] * 0.163 + 614)
-        pca.channel_set_duty(i, )
+        pca.channel_set_duty(i, duty_cycle)
 
 if __name__ == '__main__':
     rospy.init_node('thruster_interface')
 
     # Create PCA object
-    pca = PCA9685()
+    pca = PCA9685(bus=1)
     pca.set_pwm_frequency(100)
     pca.output_enable()
 
