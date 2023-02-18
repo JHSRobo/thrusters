@@ -63,6 +63,7 @@ class PCA9685:
         # Configure output enable pin
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(26, GPIO.OUT)
+        GPIO.setwarnings(False)
 
     def initialize(self):
 
