@@ -24,6 +24,6 @@ if __name__ == '__main__':
       pca.channels_set_duty_all(0.15)
       time.sleep(1)
 
-    rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
+      rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
 
     rospy.spin()
