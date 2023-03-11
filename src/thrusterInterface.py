@@ -8,7 +8,8 @@ from pca9685 import PCA9685
 def thrusterCallback(msg):
     msglist = [msg.t1, msg.t2, msg.t3, msg.t4, msg.t5, msg.t6]
     for i in range(6):
-        pca.channel_set_duty(i, 0.15 - msglist[i] / 25000)
+        try: pca.channel_set_duty(i, 0.15 - msglist[i] / 25000)
+        except: pass
 
 if __name__ == '__main__':
     rospy.init_node('thruster_interface')
@@ -24,6 +25,6 @@ if __name__ == '__main__':
       pca.channels_set_duty_all(0.15)
       time.sleep(1)
 
-      rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
+    rospy.Subscriber("thrusters", thrusterPercents, thrusterCallback)
 
     rospy.spin()
