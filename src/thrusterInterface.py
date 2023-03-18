@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rospy
 from std_msgs.msg import String
-from thrusters.msg import thrusterPercents
+from launch_files.msg import thrusterPercents
 import time
 from pca9685 import PCA9685
 
