@@ -7,6 +7,7 @@ from pca9685 import PCA9685
 
 def thrusterCallback(msg):
     msglist = [msg.t1, msg.t2, msg.t3, msg.t4, msg.t5, msg.t6]
+    # Sets the thrusters
     for i in range(6):
         pca.channel_set_duty(i, 0.15 - msglist[i] / 25000)
 
