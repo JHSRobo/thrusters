@@ -13,7 +13,7 @@ if __name__ == '__main__':
     msg.t3 = int(1500/10000*65536)
     msg.t4 = int(1500/10000*65536)
     msg.t5 = int(1500/10000*65536)
-    msg.t3 = int(1500/10000*65536)
+    msg.t6 = int(1500/10000*65536)
 
 
     while not rospy.is_shutdown():
